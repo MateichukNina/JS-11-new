@@ -10,16 +10,17 @@
     <div class="container">
       <form class="search-form" id="search-form">
         <input
+        class="search-form-input"
           type="text"
           name="searchQuery"
           autocomplete="off"
           placeholder="Search images..."
         />
-        <button type="submit">Search</button>
+        <button type="submit" class="search-form-button">Search</button>
       </form>
       <span class="loader"></span>
       <div class="gallery"></div>
-      <button type="button" class="btn-load">Load more</button>
+      <!-- <button type="button" class="btn-load">Load more</button> -->
     </div>
 
     <script type="module" src="./index.js"></script>

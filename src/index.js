@@ -6,7 +6,10 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
-const loadBtn = document.querySelector('.btn-load');
+// const loadBtn = document.querySelector('.btn-load');
+const loader = document.querySelector(".loader");
+
+loader.style.display = 'none';
 
 window.addEventListener('scroll', handleScroll);
 searchForm.addEventListener('submit', evt => onSubmit(evt));
@@ -17,16 +20,18 @@ let slider;
 
 async function onSubmit(evt) {
   evt.preventDefault();
+  loader.style.display = 'block';
   const query = searchForm.elements['searchQuery'].value;
   gallery.innerHTML = '';
   let page = 1;
   try {
     const images = await searchImages(query, page);
     if (images.length !== 0) {
+      loader.style.display = 'none';
       showImages(images);
-      // if (slider) {
-      //   slider.refresh(); 
-      // }
+       if (slider) {
+         slider.refresh(); 
+       }
     } else {
       Notiflix.Notify.warning(
         'Sorry, there are no images matching your search query. Please try again.'
@@ -65,7 +70,7 @@ function showImages(images) {
   });
 }
 
-loadBtn.addEventListener('click', loadMore);
+// loadBtn.addEventListener('click', loadMore);
 
 async function loadMore() {
   page += 1;
