@@ -33,12 +33,16 @@ async function onSubmit(evt) {
          slider.refresh(); 
        }
     } else {
+      
       Notiflix.Notify.warning(
         'Sorry, there are no images matching your search query. Please try again.'
+        
       );
+      loader.style.display = 'none';
     }
   } catch (error) {
     console.log(error);
+    
   }
   // fetchImage()
   // .then(showImages)
